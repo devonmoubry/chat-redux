@@ -1,4 +1,4 @@
-export default function (store) {
+export default function (  ) {
   console.log('The login view!');
 
   let $html = $(`
@@ -15,10 +15,7 @@ export default function (store) {
   $($html).find('#submitUsername').submit(function(event) {
     event.preventDefault();
     console.log('the login button works!');
-    store.dispatch({
-      type: "LOGIN",
-      user: $('input').val()
-    });
+
   });
 
   return $html;

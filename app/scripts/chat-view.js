@@ -1,9 +1,5 @@
-
-
 export default function chatView(store) {
   console.log('The chat view!');
-
-  let state = store.getState();
 
   let $html = $(`
     <section id="chatContainer" class="hidden">
