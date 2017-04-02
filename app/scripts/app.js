@@ -1,8 +1,6 @@
 import { createStore } from 'redux';
 import loginView from './login-view.js';
 import chatView from './chat-view.js';
-// import messageRender from './messages.js';
-
 
 export default function app () {
   const initialState = {
@@ -27,6 +25,11 @@ export default function app () {
         var newState =
           Object.assign({}, state, {user: action.user, view: chatView});
         return newState;
+
+      case "ADD_MSG":
+        var newMsgs = state.msgs.slice();
+        newMsgs.push(action.msg);
+        return Object.assign({}, state, { msgs: newMsgs });
 
       default:
         return state;
