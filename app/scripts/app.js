@@ -1,11 +1,12 @@
 import { createStore } from 'redux';
 import loginView from './login-view.js';
-// import chatView from './chat-view.js';
+import chatView from './chat-view.js';
 // import messageRender from './messages.js';
 
 
 export default function app () {
   const initialState = {
+    user: '',
     msgs: [],
     view: loginView
   };
@@ -21,6 +22,11 @@ export default function app () {
         console.log('It works!');
         console.log(state);
         return state;
+
+      case "LOGIN":
+        var newState =
+          Object.assign({}, state, {user: action.user, view: chatView});
+        return newState;
 
       default:
         return state;
