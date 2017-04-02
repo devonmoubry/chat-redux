@@ -28,7 +28,14 @@ export default function app () {
 
       case "ADD_MSG":
         var newMsgs = state.msgs.slice();
-        newMsgs.push(action.msg);
+        // body: body, sender: sender, timestamp: timestamp
+        var newMessage = {
+          body: action.body,
+          sender: action.sender,
+          timestamp: action.timestamp
+        }
+
+        newMsgs.push(newMessage);
         return Object.assign({}, state, { msgs: newMsgs });
 
       default:

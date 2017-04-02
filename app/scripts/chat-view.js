@@ -21,9 +21,11 @@ export default function chatView( store ) {
   $($html).find('#newMessage').submit(function(event) {
     event.preventDefault();
     console.log('the chat buttom works!');
-    console.log(event.target.elements['message'].value);
-    var newMessage = event.target.elements['message'].value;
-    store.dispatch({ type: "ADD_MSG", msg: newMessage });
+    var body = event.target.elements['message'].value;
+    var sender = store.getState().user;
+    var timestamp = new Date();
+
+    store.dispatch({ type: "ADD_MSG", body: body, sender: sender, timestamp: timestamp});
   });
 
   return $html;
