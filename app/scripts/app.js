@@ -1,12 +1,13 @@
 import { createStore } from 'redux';
-// import loginView from './login-view.js';
+import loginView from './login-view.js';
 // import chatView from './chat-view.js';
 // import messageRender from './messages.js';
 
 
 export default function app () {
   const initialState = {
-    items: []
+    msgs: [],
+    view: loginView
   };
 
   const chatReducer = function( state, action ) {
@@ -26,7 +27,16 @@ export default function app () {
     }
   };
 
-  const store = createStore(chatReducer);
-  store.dispatch({ type: "TESTING" });
+  const render =  function () {
+    let state = store.getState();
+    $('#app').html(state.view(store));
+  }
 
+  const store = createStore(chatReducer);
+
+  // render function will be executed
+  // whenever an action is dispatched
+  store.subscribe(render);
+
+  store.dispatch({ type: "TESTING" });
 }

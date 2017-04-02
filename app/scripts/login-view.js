@@ -1,4 +1,4 @@
-export default function (  ) {
+export default function ( store ) {
   console.log('The login view!');
 
   let $html = $(`
